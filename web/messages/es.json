@@ -1756,7 +1756,17 @@
       "loadConfigFailed": "Error al cargar los ajustes de respaldo del modelo: {error}",
       "configSaved": "Ajustes de respaldo del modelo guardados",
       "restored": "Se restauró la plantilla integrada predeterminada",
-      "restoreFailed": "Error al restaurar: {error}"
+      "restoreFailed": "Error al restaurar: {error}",
+      "usageTitle": "Uso de tokens del juez",
+      "usageDesc": "Uso acumulado del juez de modelo (aprobación de respaldo). Se mide por separado (worker=judge), sin mezclarse con las estadísticas de cada perfil",
+      "usageRefresh": "Actualizar",
+      "usageCalls": "Llamadas al juez",
+      "usageInput": "Tokens de entrada",
+      "usageOutput": "Tokens de salida",
+      "usageCacheRead": "Lectura de caché",
+      "usageCacheWrite": "Escritura de caché",
+      "usageDaily": "Uso diario, últimos 30 días (entrada + salida)",
+      "usageBarTitle": "{date} · {calls} llamadas · {tokens} tokens"
     }
   },
   "assetInterceptPage": {

@@ -1756,7 +1756,17 @@
       "loadConfigFailed": "加载模型兜底配置失败: {error}",
       "configSaved": "模型兜底配置已保存",
       "restored": "已恢复内置默认模板",
-      "restoreFailed": "恢复失败: {error}"
+      "restoreFailed": "恢复失败: {error}",
+      "usageTitle": "审批 Token 消耗",
+      "usageDesc": "模型兜底审批累计用量，单独计量（worker=judge），不与各模型配置的统计混在一起",
+      "usageRefresh": "刷新",
+      "usageCalls": "审批调用",
+      "usageInput": "输入 Token",
+      "usageOutput": "输出 Token",
+      "usageCacheRead": "缓存读",
+      "usageCacheWrite": "缓存写",
+      "usageDaily": "近 30 天每日消耗（输入 + 输出）",
+      "usageBarTitle": "{date} · {calls} 次 · {tokens} tokens"
     }
   },
   "assetInterceptPage": {

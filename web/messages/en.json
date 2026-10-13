@@ -1756,7 +1756,17 @@
       "loadConfigFailed": "Failed to load model fallback settings: {error}",
       "configSaved": "Model fallback settings saved",
       "restored": "Reverted to the built-in default template",
-      "restoreFailed": "Restore failed: {error}"
+      "restoreFailed": "Restore failed: {error}",
+      "usageTitle": "Judge token usage",
+      "usageDesc": "Cumulative usage of the model judge (fallback approval). Metered separately (worker=judge), so it is not mixed into per-profile statistics",
+      "usageRefresh": "Refresh",
+      "usageCalls": "Judge calls",
+      "usageInput": "Input tokens",
+      "usageOutput": "Output tokens",
+      "usageCacheRead": "Cache read",
+      "usageCacheWrite": "Cache write",
+      "usageDaily": "Daily usage, last 30 days (input + output)",
+      "usageBarTitle": "{date} · {calls} calls · {tokens} tokens"
     }
   },
   "assetInterceptPage": {
