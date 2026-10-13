@@ -8,6 +8,15 @@ The upstream ARTEX project's per-version release history (0.3.x and earlier) and
 
 ## [Unreleased]
 
+### Intercept
+
+- **Restored the upstream fallback-judge token-usage API.** `GET /api/intercept/judge/usage` existed in
+  upstream ARTEX 0.3.15 but not in this fork, so the "Intercept → Model settings" screen had no way to
+  fetch the judge's cumulative spend and daily series (the path returned 404 even after auth). Totals
+  count `worker='judge'` rows only (all-time); `?days=` bounds the daily series (default 30); with no
+  database it answers 200 with an empty series instead of 500. Three DB-gated tests pin the aggregation,
+  the window boundary and the no-database path.
+
 ### Localization (i18n)
 
 - **Show built-in agent names and descriptions per language.** The built-in agents (goal decomposition, planning, main, execution, Auto, penetration test, vulnerability retest) are DB seed data (`builtinAgents` in `db/db.go` and the retest agent in `server/finding_retests.go`), so their names, descriptions, and prompt-variable labels used to appear only in Chinese. They are now looked up by agent `key` in `web/messages/` and shown in the current language (falling back to the DB value). User-created agents keep showing their DB values. Applied to the agent list, the editor drawer, and the chat screen; approval/intercept records that come from a chat now show the agent name instead of its internal key (e.g. `pentest`).

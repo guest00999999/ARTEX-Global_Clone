@@ -1033,6 +1033,7 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("GET /api/intercept/pending/{id}", s.interceptGetOne)
 	mux.HandleFunc("POST /api/intercept/pending/{id}/decide", s.interceptDecide)
 	mux.HandleFunc("GET /api/intercept/history", s.interceptHistory)
+	mux.HandleFunc("GET /api/intercept/judge/usage", s.interceptJudgeUsage) // 兜底审批累计 token 用量
 	mux.HandleFunc("GET /api/intercept/history/{id}", s.interceptDetail)
 	mux.HandleFunc("GET /api/intercept/history/{id}/execution", s.interceptExecution)
 	mux.HandleFunc("GET /api/intercept/task/{taskID}", s.interceptListTaskItems)

@@ -446,6 +446,23 @@ func (s *Server) interceptSetJudgeConfig(w http.ResponseWriter, r *http.Request)
 	writeJSON(w, 200, map[string]any{"ok": true})
 }
 
+// interceptJudgeUsage returns the fallback judge's cumulative token spend plus a
+// recent daily series, for the config page. ?days bounds the daily series (default 30).
+func (s *Server) interceptJudgeUsage(w http.ResponseWriter, r *http.Request) {
+	pg := s.m.PG()
+	if pg == nil {
+		writeJSON(w, 200, db.JudgeUsage{Daily: []db.JudgeDayUsage{}})
+		return
+	}
+	days := atoiDefault(r.URL.Query().Get("days"), 30)
+	usage, err := pg.JudgeUsageStats(days)
+	if err != nil {
+		writeErr(w, 500, err.Error())
+		return
+	}
+	writeJSON(w, 200, usage)
+}
+
 // --- helpers ---
 
 type interceptRuleReq struct {
