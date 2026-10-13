@@ -1,67 +1,83 @@
-// TEMPORARY: offline build fallback — uses local Geist fonts instead of Google Fonts.
-// Restore registry.ts.bak after build.
+// 오프라인 빌드용 로컬 폰트 레지스트리. 한글 UI 가 뷰어 OS 폰트에 의존하면 대체 글꼴
+// 메트릭 차이로 글자가 겹쳐 보이므로, sans 계열은 한글·라틴을 모두 포함하는 Pretendard
+// (번들)로 통일한다. mono 계열(코드/숫자)은 Geist Mono 를 유지한다.
 import localFont from "next/font/local";
 
 import { GeistPixelSquare } from "geist/font/pixel";
 
 const geist = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-geist",
 });
 const inter = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-inter",
 });
 const notoSans = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-noto-sans",
 });
 const roboto = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-roboto",
 });
 const outfit = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-outfit",
 });
 const dmSans = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-dm-sans",
 });
 const nunitoSans = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-nunito-sans",
 });
 const figtree = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-figtree",
 });
 const raleway = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-raleway",
 });
 const publicSans = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-public-sans",
 });
 const notoSerif = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-noto-serif",
 });
 const robotoSlab = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-roboto-slab",
 });
 const merriweather = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-merriweather",
 });
 const lora = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-lora",
 });
 const playfairDisplay = localFont({
-  src: "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  src: "./PretendardVariable.woff2",
+  weight: "100 900",
   variable: "--font-playfair-display",
 });
 const geistMono = localFont({
