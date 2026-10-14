@@ -30,7 +30,10 @@
       "setupToken": "セットアップトークン",
       "setupTokenPlaceholder": "サーバーコンソールログの [auth] 行に出力された32文字のトークン",
       "setupTokenHelp": "外部の第三者に管理者アカウントを先に取得されないよう、サーバーを起動したターミナル（Docker の場合は docker compose logs artex）にのみ出力されるセットアップトークンの入力が必要です。",
-      "errorTokenEmpty": "セットアップトークンを入力してください"
+      "errorTokenEmpty": "セットアップトークンを入力してください",
+      "unavailableTitle": "初期化の状態を確認できません",
+      "unavailableDesc": "バックエンドまたはデータベースが一時的に利用できません。すでに設定済みのパスワードを上書きしないよう、初期化の入口を一時的に閉じています。サービスを復旧してから、もう一度お試しください。",
+      "retry": "再試行"
     },
     "terms": {
       "a1Body": "本ソフトウェア（ARTEX）は、GNU Affero General Public License v3.0（AGPL-3.0）に基づいて配布されるオープンソースプログラムです。利用者は、このライセンスに従い、本ソフトウェアを自由に使用、複製、改変および配布することができます。ただし、すべての二次的著作物（ネットワークを通じて第三者に提供されるオンラインサービスを含みます。）についても、同様に AGPL-3.0 で公開し、利用者に対して該当する完全なソースコードを開示しなければなりません。AGPL-3.0 の全条項は、同梱される LICENSE ファイルに従います。",
@@ -1756,7 +1759,17 @@
       "loadConfigFailed": "モデルのフォールバック設定を読み込めませんでした: {error}",
       "configSaved": "モデルのフォールバック設定を保存しました",
       "restored": "デフォルトの内蔵テンプレートに戻しました",
-      "restoreFailed": "復元に失敗しました: {error}"
+      "restoreFailed": "復元に失敗しました: {error}",
+      "usageTitle": "判定 Token 使用量",
+      "usageDesc": "モデル判定(フォールバック承認)の累計使用量です。worker=judge で別途集計するため、モデルプロファイルごとの統計と混ざりません",
+      "usageRefresh": "更新",
+      "usageCalls": "判定呼び出し",
+      "usageInput": "入力 Token",
+      "usageOutput": "出力 Token",
+      "usageCacheRead": "キャッシュ読み取り",
+      "usageCacheWrite": "キャッシュ書き込み",
+      "usageDaily": "直近30日の日別使用量(入力 + 出力)",
+      "usageBarTitle": "{date} · {calls}回 · {tokens} tokens"
     }
   },
   "assetInterceptPage": {

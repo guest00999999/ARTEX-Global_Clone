@@ -61,12 +61,12 @@ var logCatalog = map[string]map[string]string{
 	"[auth] %s 가 %d바이트를 넘어 무시합니다. 설정 토큰 방식으로 초기화하세요": {
 		"en": "[auth] ignoring %s because it exceeds %d bytes; initialise with the setup token instead",
 		"zh": "[auth] %s 超过 %d 字节，已忽略。请使用设置令牌方式初始化",
-		"es": "[auth] se ignora %s porque supera los %d bytes; inicialice con el token de configuración",
+		"es": "[auth] se ignora %s porque supera los %d bytes; inicialice con el token de configuración", "ja": "[auth] %s が %d バイトを超えるため無視します。設定トークン方式で初期化してください",
 	},
 	"[auth] 비밀번호 상태를 읽지 못해 첫 실행 초기화를 건너뜁니다: %v": {
 		"en": "[auth] could not read the password state; skipping first-run initialisation: %v",
 		"zh": "[auth] 无法读取密码状态，跳过首次运行初始化: %v",
-		"es": "[auth] no se pudo leer el estado de la contraseña; se omite la inicialización inicial: %v",
+		"es": "[auth] no se pudo leer el estado de la contraseña; se omite la inicialización inicial: %v", "ja": "[auth] パスワードの状態を読み取れず、初回起動時の初期化をスキップします: %v",
 	},
 	"[auth] %s 해시 생성 실패: %v": {
 		"en": "[auth] failed to hash %s: %v",
