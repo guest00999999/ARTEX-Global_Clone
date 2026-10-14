@@ -40,7 +40,7 @@ ARTEX es un sistema en el que varios agentes impulsados por LLM ejecutan de form
 
 ARTEX solo puede usarse **contra objetivos de su propiedad o para los que tenga autorización explícita por escrito.** Cualquier escaneo, sondeo o explotación que exceda el alcance autorizado puede ser ilegal en sí mismo.
 
-- En la República de Corea, intrusarse en la red de información y comunicaciones de un tercero, o perturbarla, sin autorización infringe la **Ley de Promoción del Uso de Redes de Información y Comunicaciones y de Protección de la Información** (정보통신망법).
+- En la República de Corea, acceder sin autorización a la red de información y comunicaciones de un tercero, o perturbarla, infringe la **Ley de Promoción del Uso de Redes de Información y Comunicaciones y de Protección de la Información** (정보통신망법).
 - Los datos personales recopilados o expuestos durante una prueba de penetración están sujetos a la **Ley de Protección de Datos Personales** de Corea (개인정보보호법). Incluso con autorización, maneje con cuidado el acceso, la retención y la eliminación de datos personales.
 - Esté donde esté, cumpla las leyes de su propia jurisdicción sobre seguridad de redes, protección de datos y delitos informáticos.
 - Utilícelo para **aprendizaje, investigación y verificación en entornos aislados localmente.** Antes de dirigirse a cualquier sistema externo en producción, obtenga autorización por escrito y un alcance y una ventana de tiempo acordados.
