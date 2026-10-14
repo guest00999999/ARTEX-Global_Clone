@@ -940,83 +940,81 @@ export default function TasksPage() {
                  (설명·목표 진행도·Worker·생성/실행 시각·Token)부터 숨겨, 고정된 「동작」
                  열이 다른 열 위에 겹치지 않게 한다. */
               <div className="@container">
-              <Table className="**:data-[slot='table-cell']:px-4 **:data-[slot='table-head']:px-4">
-                <TableHeader className="[&_tr]:border-t">
-                  <TableRow>
-                    <TableHead className="w-10">
-                      <Checkbox
-                        checked={headerChecked}
-                        onCheckedChange={(checked) => toggleSelectedPage(checked === true)}
-                        aria-label={t("table.selectAllAria")}
+                <Table className="**:data-[slot='table-cell']:px-4 **:data-[slot='table-head']:px-4">
+                  <TableHeader className="[&_tr]:border-t">
+                    <TableRow>
+                      <TableHead className="w-10">
+                        <Checkbox
+                          checked={headerChecked}
+                          onCheckedChange={(checked) => toggleSelectedPage(checked === true)}
+                          aria-label={t("table.selectAllAria")}
+                        />
+                      </TableHead>
+                      <SortableTaskHead
+                        field="id"
+                        label="ID"
+                        activeField={sortField}
+                        direction={sortDirection}
+                        className="font-mono"
+                        onSort={sortTasksBy}
                       />
-                    </TableHead>
-                    <SortableTaskHead
-                      field="id"
-                      label="ID"
-                      activeField={sortField}
-                      direction={sortDirection}
-                      className="font-mono"
-                      onSort={sortTasksBy}
-                    />
-                    <TableHead>{t("table.name")}</TableHead>
-                    <TableHead className="hidden @5xl:table-cell">{t("table.description")}</TableHead>
-                    <TableHead>{t("table.target")}</TableHead>
-                    <SortableTaskHead
-                      field="status"
-                      label={t("table.status")}
-                      activeField={sortField}
-                      direction={sortDirection}
-                      onSort={sortTasksBy}
-                    />
-                    <TableHead className="hidden text-center @3xl:table-cell">{t("table.goalProgress")}</TableHead>
-                    <TableHead className="text-center" title={t("table.findingsTitle")}>
-                      {t("table.findings")}{" "}
-                      <span className="text-muted-foreground font-normal">{t("table.findingsSub")}</span>
-                    </TableHead>
-                    <TableHead className="hidden text-center @4xl:table-cell">{t("table.runningWorker")}</TableHead>
-                    <SortableTaskHead
-                      field="created"
-                      label={t("table.created")}
-                      activeField={sortField}
-                      direction={sortDirection}
-                      align="right"
-                      className="hidden @6xl:table-cell"
-                      onSort={sortTasksBy}
-                    />
-                    <SortableTaskHead
-                      field="duration"
-                      label={t("table.duration")}
-                      activeField={sortField}
-                      direction={sortDirection}
-                      align="right"
-                      className="hidden @6xl:table-cell"
-                      onSort={sortTasksBy}
-                    />
-                    <TableHead className="hidden text-right @7xl:table-cell">Token</TableHead>
-                    <TableHead className="text-right">
-                      {t("table.actions")}
-                    </TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {paginated.map((task) => (
-                    <TaskRow
-                      key={task.id}
-                      task={task}
-                      // running 任务才吃 nowSec;其余行传 0 —— props 不变,memo 就能拦下每秒 tick
-                      // 带来的整表重渲染,只让在跑的那几行走时长。
-                      nowSec={task.status === "running" ? nowSec : 0}
-                      onDelete={deleteTask}
-                      onControl={controlTask}
-                      onRename={renameTask}
-                      onTogglePinned={toggleTaskPinned}
-                      onArchive={queueTaskArchive}
-                      selected={selectedIds.has(task.id)}
-                      onSelectedChange={toggleSelected}
-                    />
-                  ))}
-                </TableBody>
-              </Table>
+                      <TableHead>{t("table.name")}</TableHead>
+                      <TableHead className="hidden @5xl:table-cell">{t("table.description")}</TableHead>
+                      <TableHead>{t("table.target")}</TableHead>
+                      <SortableTaskHead
+                        field="status"
+                        label={t("table.status")}
+                        activeField={sortField}
+                        direction={sortDirection}
+                        onSort={sortTasksBy}
+                      />
+                      <TableHead className="hidden text-center @3xl:table-cell">{t("table.goalProgress")}</TableHead>
+                      <TableHead className="text-center" title={t("table.findingsTitle")}>
+                        {t("table.findings")}{" "}
+                        <span className="text-muted-foreground font-normal">{t("table.findingsSub")}</span>
+                      </TableHead>
+                      <TableHead className="hidden text-center @4xl:table-cell">{t("table.runningWorker")}</TableHead>
+                      <SortableTaskHead
+                        field="created"
+                        label={t("table.created")}
+                        activeField={sortField}
+                        direction={sortDirection}
+                        align="right"
+                        className="hidden @6xl:table-cell"
+                        onSort={sortTasksBy}
+                      />
+                      <SortableTaskHead
+                        field="duration"
+                        label={t("table.duration")}
+                        activeField={sortField}
+                        direction={sortDirection}
+                        align="right"
+                        className="hidden @6xl:table-cell"
+                        onSort={sortTasksBy}
+                      />
+                      <TableHead className="hidden text-right @7xl:table-cell">Token</TableHead>
+                      <TableHead className="text-right">{t("table.actions")}</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {paginated.map((task) => (
+                      <TaskRow
+                        key={task.id}
+                        task={task}
+                        // running 任务才吃 nowSec;其余行传 0 —— props 不变,memo 就能拦下每秒 tick
+                        // 带来的整表重渲染,只让在跑的那几行走时长。
+                        nowSec={task.status === "running" ? nowSec : 0}
+                        onDelete={deleteTask}
+                        onControl={controlTask}
+                        onRename={renameTask}
+                        onTogglePinned={toggleTaskPinned}
+                        onArchive={queueTaskArchive}
+                        selected={selectedIds.has(task.id)}
+                        onSelectedChange={toggleSelected}
+                      />
+                    ))}
+                  </TableBody>
+                </Table>
               </div>
             )}
             <TablePagination
