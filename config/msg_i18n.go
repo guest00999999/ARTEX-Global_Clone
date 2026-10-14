@@ -2,7 +2,7 @@ package config
 
 // 기동 단계(DB 연결 이전)의 운영자 대면 메시지 번역. 이 시점에는 settings 테이블을 읽을 수
 // 없으므로 런타임 설정(ActiveLanguage)이 아니라 구성된 기본 언어(Language(): ARTEX_LANG >
-// 설정 파일 > ko)를 기준으로 치환한다. 조치에 필요한 식별자(ARTEX_PG_DSN·database·dsn·
+// 설정 파일 > en)를 기준으로 치환한다. 조치에 필요한 식별자(ARTEX_PG_DSN·database·dsn·
 // host/user/dbname 등)는 번역하지 않고 원문을 그대로 둔다. "ko" 는 키 자체이므로 저장하지
 // 않고, 조회 실패·ko 일 때는 원문을 돌려준다.
 var cfgCatalog = map[string]map[string]string{
@@ -57,6 +57,16 @@ var logCatalog = map[string]map[string]string{
 		"en": "[auth] ignoring %s because it is shorter than %d characters; initialise with the setup token instead",
 		"zh": "[auth] %s 少于 %d 个字符，已忽略。请使用设置令牌方式初始化",
 		"es": "[auth] se ignora %s porque tiene menos de %d caracteres; inicialice con el token de configuración",
+	},
+	"[auth] %s 가 %d바이트를 넘어 무시합니다. 설정 토큰 방식으로 초기화하세요": {
+		"en": "[auth] ignoring %s because it exceeds %d bytes; initialise with the setup token instead",
+		"zh": "[auth] %s 超过 %d 字节，已忽略。请使用设置令牌方式初始化",
+		"es": "[auth] se ignora %s porque supera los %d bytes; inicialice con el token de configuración",
+	},
+	"[auth] 비밀번호 상태를 읽지 못해 첫 실행 초기화를 건너뜁니다: %v": {
+		"en": "[auth] could not read the password state; skipping first-run initialisation: %v",
+		"zh": "[auth] 无法读取密码状态，跳过首次运行初始化: %v",
+		"es": "[auth] no se pudo leer el estado de la contraseña; se omite la inicialización inicial: %v",
 	},
 	"[auth] %s 해시 생성 실패: %v": {
 		"en": "[auth] failed to hash %s: %v",
