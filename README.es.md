@@ -98,7 +98,7 @@ cd artex-global
 cp .env.example .env          # set POSTGRES_PASSWORD; ANTHROPIC_API_KEY is optional
 docker compose up -d          # brings up the artex image + postgres together
 # → open http://localhost:8787 (on first visit, set the admin password at /setup)
-#   /setup asks for the setup token printed in the startup log: docker compose logs artex | grep '설정 토큰'
+#   /setup asks for the setup token printed in the startup log: docker compose logs artex | grep -F '[auth]'
 ```
 
 La imagen incluye herramientas habituales (ripgrep, curl, vim, npm, nmap y más), y cuando se levanta con compose, `./skills` y `./data` se montan (bind-mount) en el host y sobreviven a la recreación del contenedor.
@@ -159,7 +159,7 @@ La imposición del idioma de salida está **guiada por una directiva del prompt 
 
 Hay una única cuenta de administrador (`ARTEX`) cuya contraseña se crea en la primera visita en `/setup`. Para que quien llegue primero a una instancia aún no inicializada no pueda apropiársela, se aplican las siguientes protecciones.
 
-- **Token de configuración.** Cuando el servidor arranca sin contraseña, imprime una línea `[auth] … 설정 토큰: …` (token de configuración) en la consola (`docker compose logs artex` bajo Docker). `/setup` y `POST /api/auth/init` (campo `setup_token`) solo crean la contraseña cuando ese valor coincide, y los intentos erróneos tienen límite de frecuencia. Para despliegues desatendidos, fíjelo con `ARTEX_SETUP_TOKEN`, o establezca la contraseña directamente con `ARTEX_ADMIN_PASSWORD` (8 o más caracteres).
+- **Token de configuración.** Cuando el servidor arranca sin contraseña, imprime una línea `[auth] … Setup token: …` en la consola (el idioma predeterminado es el inglés, por lo que el registro también está en inglés; `docker compose logs artex` bajo Docker). `/setup` y `POST /api/auth/init` (campo `setup_token`) solo crean la contraseña cuando ese valor coincide, y los intentos erróneos tienen límite de frecuencia. Para despliegues desatendidos, fíjelo con `ARTEX_SETUP_TOKEN`, o establezca la contraseña directamente con `ARTEX_ADMIN_PASSWORD` (8 o más caracteres).
 - **Se enlaza a 127.0.0.1 por defecto.** Tanto el valor predeterminado de `-addr` de `artex` como la publicación de puertos en `docker-compose.yml` abren únicamente la interfaz de loopback. Para alcanzarla desde otras máquinas, use `-addr :8787` o `ARTEX_BIND=0.0.0.0` en `.env`, pero termine primero la configuración inicial y prefiera la disposición con proxy inverso de más abajo. Arrancar sin contraseña en una dirección que no sea loopback registra una advertencia.
 - **Cambiar la contraseña finaliza todas las sesiones.** La clave de firma de los tokens está ligada al hash de la contraseña, de modo que los tokens emitidos antes de un cambio (desde la interfaz, `reset-password.sh` o una edición directa de la BD) dejan de funcionar en cuestión de segundos. Al recuperarse de una cuenta comprometida, revise también las herramientas personalizadas, MCP, el LLM y los ajustes de notificación después de cambiar la contraseña.
 - **CORS.** `/api` solo responde a llamadas de navegador de origen cruzado procedentes de orígenes listados en `ARTEX_CORS_ORIGINS` (separados por comas). La interfaz embebida es del mismo origen, así que esto normalmente está vacío; el valor predeterminado solo permite `next dev` desde `dev.sh` (`http://localhost:5173`).
